@@ -73,7 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request', #required by AllAuth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'bag.contexts.bag.contents',
+                'bag.contexts.bag_contents',
             ],
         },
     },
@@ -162,4 +162,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 FREE_DELIVERY_THRESHOLD = 50
-STANDARD_DELIVERY_PRECENTAGE = 10
+STANDARD_DELIVERY_PERCENTAGE = 10
