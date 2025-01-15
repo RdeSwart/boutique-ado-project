@@ -112,7 +112,23 @@
     </header>
 
     {% if messages %}
-        <div class="message-container"></div>
+        <div class="message-container">
+            {% for message in messages %}
+            <!-- Using a simple with statement. We can check the level of the message.
+                And render the appropriate toast. -->
+                {% with message.level as level %} 
+                     {% if level == 40 %} <!--In Django, a message of level 40 is an error. -->
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %} <!--In Django, a message of level 30 is a warning. -->
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %} <!--In Django, a message of level 25 is a success. -->
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %} <!--Default to using the info toast for everything else. -->
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
     {% endif %}
 
     {% block page_header %}
@@ -122,6 +138,9 @@
     {% endblock %}
 
     {% block postloadjs %}
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script> 
     {% endblock %}
 
     

@@ -1,0 +1,18 @@
+<div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
+    <div class="arrow-up arrow-success"></div>
+    <div class="w-100 taost-capper bg-success"></div>
+    <div class="toast-header bg-white text-dark"> <!--header-->
+        <strong class="mr-auto">Success!</strong>
+        <!--User gets to dismiss notification themselves-->
+        <button type="button" class="ml-2 mb-1 close text-dark" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body bg-white"><!--body-->
+        {{ message }}
+    </div>
+</div>
+
+<!-- Almost everything here is straight from bootstrap. With the exception of our custom toast class.
+And these two divs at the top.
+Which will just add a little extra visual touch to the top of the notification. -->
