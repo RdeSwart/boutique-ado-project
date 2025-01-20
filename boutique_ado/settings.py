@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout',
+
+    #Other
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -59,6 +62,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'boutique_ado.urls'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'#telling which template pack we want to use
 
 TEMPLATES = [
     {
@@ -74,8 +79,13 @@ TEMPLATES = [
                 'django.template.context_processors.request', #required by AllAuth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',#without this the MEDIA_URL wont work(see checkout.html) to render noimage file if image doesnt exist.
                 'bag.contexts.bag_contents',
             ],
+            'builtins': [ #contains all the tags we want available in all our templates by default, instead of loading the template tags like we load static in all our templates.
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
